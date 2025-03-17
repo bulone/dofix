@@ -1,0 +1,101 @@
+$header-background-color: #f8f8f8 !default;
+$header-background-color-dark: #252627 !default;
+
+/* ---------------------------------- */
+/*                公共样式                */
+/* ---------------------------------- */
+
+/* ------------- 头部玻璃效果 ------------- */
+@mixin background-blur($light-color: rgba(244, 244, 246, 0.5), $dark-color: rgba(22, 22, 24, 0.7)) {
+    background-color: $light-color;
+    backdrop-filter: blur(20px) saturate(180%);
+    [data-theme="dark"] & {
+        background-color: $dark-color;
+    }
+}
+
+/* ------------- 主题深色模式 ------------- */
+@mixin dark-theme {
+    [data-theme="dark"] & {
+        @content;
+    }
+}
+
+/* -------------- 背景透明 -------------- */
+%background-transparent {
+    background-color: transparent;
+    @include dark-theme {
+        background-color: transparent;
+    }
+}
+
+header {
+    @extend %background-transparent;
+    .header-blur,
+    .header-blur-mobile {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        @include z-index(-1);
+        @include background-blur();
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+    }
+}
+.blur header {
+    .background-blur,
+    .background-blur-mobile {
+        opacity: 1;
+    }
+}
+
+#header-mobile .header-container .menu {
+    @include background-blur;
+    @extend %background-transparent;
+    border-top: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    .search-wrapper,
+    .menu-system {
+        @extend %background-transparent;
+    }
+}
+
+.fixed-button{
+    @include dark-theme {
+        background-color: rgba(22, 22, 24, 0.7);
+    }
+}
+
+// @media only screen and (max-width: 480px){
+//     .container {
+//         position: relative;
+//         &:before,
+//         &:after {
+//             content: "";
+//             position: fixed;
+//             width: 20px;
+//             height: 20px;
+//             @include z-index(2);
+//         }
+//         &::before {
+//             left: 0;
+//             background: radial-gradient(circle at 100% 100%, transparent 20px, $header-background-color 20px);
+//             [data-theme="dark"] & {
+//                 background: radial-gradient(circle at 100% 100%, transparent 20px, $header-background-color-dark 20px);
+
+//             }
+//         }
+//         &:after {
+//             right: 0;
+//             background: radial-gradient(circle at 0 100%, transparent 20px, $header-background-color 20px,);
+//             [data-theme = "dark"] & {
+
+//             background: radial-gradient(circle at 0 100%, transparent 20px, $header-background-color-dark 20px,);
+//             }
+//         }
+//     }
+
+// }

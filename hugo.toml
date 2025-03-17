@@ -11,21 +11,21 @@
 # -------------------------------------------------------------------------------------
 
 # website title
-title = ""
+title = "测试网站"
 # Hostname (and path) to the root
 baseURL = "http://localhost:1313"
 # theme list
-# theme = ["FixIt"] # enable in your site config file
+ theme = ["FixIt"] # enable in your site config file
 # determines default content language ["en", "zh-cn", "fr", "pl", ...]
-defaultContentLanguage = "en"
+defaultContentLanguage = "zh-cn"
 # language code ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "en"
+languageCode = "zh-CN"
 # language name ["English", "简体中文", "Français", "Polski", ...]
 languageName = "English"
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = false
 # default amount of posts in each pages
-paginate = 12
+pageSize = 12
 # copyright description used only for seo schema
 copyright = ""
 # whether to use robots.txt
@@ -60,7 +60,7 @@ enableEmoji = true
       # whether set as a draft menu item whose function is similar to a draft post/page
       draft = false
       # FixIt 0.2.16 | NEW add fontawesome icon to a specific menu item
-      icon = "fa-solid fa-archive"
+      icon = ""
       # FixIt 0.2.16 | NEW set menu item type, optional values: ["mobile", "desktop"]
       type = ""
       # FixIt 0.3.9 | NEW whether to show the submenu item divider line
@@ -75,7 +75,7 @@ enableEmoji = true
     title = ""
     weight = 2
     [menu.main.params]
-      icon = "fa-solid fa-folder-tree"
+      icon = ""
   [[menu.main]]
     identifier = "tags"
     parent = ""
@@ -86,7 +86,7 @@ enableEmoji = true
     title = ""
     weight = 3
     [menu.main.params]
-      icon = "fa-solid fa-tags"
+      icon = ""
 
 # -------------------------------------------------------------------------------------
 # Related content Configuration
@@ -388,7 +388,7 @@ enableEmoji = true
 
   # Search config
   [params.search]
-    enable = false
+    enable = "true"
     # type of search engine ["algolia", "fuse", "cse", "post-chat"]
     type = "fuse"
     # max index length of the chunked content
@@ -410,19 +410,19 @@ enableEmoji = true
     [params.search.fuse]
       # FixIt 0.2.17 | NEW https://fusejs.io/api/options.html
       isCaseSensitive = false
-      minMatchCharLength = 2
-      findAllMatches = false
+      minMatchCharLength = 1
+      findAllMatches = true
       location = 0
       threshold = 0.3
       distance = 100
-      ignoreLocation = false
-      useExtendedSearch = false
-      ignoreFieldNorm = false
+      ignoreLocation = true
+      useExtendedSearch = true
+      ignoreFieldNorm = true
 
   # FixIt 0.3.16 | NEW Custom Search Engine (CSE)
   [params.cse]
     # Search Engine: ["google", "bing"]
-    engine = ""
+    engine = "bing"
     # Search results page URL (layout: search)
     resultsPage = "/search/"
     # Google: https://programmablesearchengine.google.com/
@@ -437,7 +437,7 @@ enableEmoji = true
     # FixIt 0.2.13 | CHANGED desktop header mode ["sticky", "normal", "auto"]
     desktopMode = "sticky"
     # FixIt 0.2.13 | CHANGED mobile header mode ["sticky", "normal", "auto"]
-    mobileMode = "auto"
+    mobileMode = "sticky"
     # Header title config
     [params.header.title]
       # URL of the LOGO
@@ -460,8 +460,8 @@ enableEmoji = true
   # FixIt 0.2.18 | NEW Breadcrumb config
   [params.breadcrumb]
     enable = false
-    sticky = false
-    showHome = false
+    sticky = true
+    showHome = true
     # FixIt 0.3.13 | NEW
     separator = "/"
     capitalize = true
@@ -511,14 +511,14 @@ enableEmoji = true
   # FixIt 0.3.0 | NEW Archives page config (all pages of posts type)
   [params.archives]
     # special amount of posts in archives page
-    paginate = 20
+    pageSize = 20
     # date format (month and day)
     dateFormat = "01-02"
 
   # Section page config (all pages in section)
   [params.section]
     # special amount of pages in each section page
-    paginate = 20
+    pageSize = 20
     # date format (month and day)
     dateFormat = "01-02"
     # FixIt 0.3.10 | NEW Section feed config for RSS, Atom and JSON feed.
@@ -531,7 +531,7 @@ enableEmoji = true
   # Term list (category or tag) page config
   [params.list]
     # special amount of posts in each list page
-    paginate = 20
+    pageSize = 20
     # date format (month and day)
     dateFormat = "01-02"
     # FixIt 0.3.10 | NEW Term list feed config for RSS, Atom and JSON feed.
@@ -582,7 +582,7 @@ enableEmoji = true
     [params.home.posts]
       enable = true
       # special amount of posts in each home posts page
-      paginate = 6
+      pageSize = 6
 
   # FixIt 0.2.16 | CHANGED Social config about the author
   [params.social]
@@ -831,7 +831,7 @@ enableEmoji = true
     # CDN data file name, disabled by default ["jsdelivr.yml", "unpkg.yml", ...]
     # located in "themes/FixIt/assets/data/cdn/" directory
     # you can store your own data files in the same path under your project: "assets/data/cdn/"
-    data = ""
+    data = "unpkg.yml"
 
   # Compatibility config
   [params.compatibility]
@@ -1014,12 +1014,12 @@ enableEmoji = true
     # FixIt 0.3.0 | NEW whether to show link to report issue for the post
     linkToReport = true
     # FixIt 0.3.10 | CHANGED Page style ["narrow", "normal", "wide", ...]
-    pageStyle = "normal"
+    pageStyle = "narrow"
     # FixIt 0.2.17 | CHANGED Auto Bookmark Support
     # If true, save the reading progress when closing the page.
     autoBookmark = false
     # FixIt 0.2.17 | NEW whether to enable wordCount
-    wordCount = true
+    wordCount = false
     # FixIt 0.2.17 | NEW whether to enable readingTime
     readingTime = true
     # FixIt 0.2.17 | NEW end of post flag
