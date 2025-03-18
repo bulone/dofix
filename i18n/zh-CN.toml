@@ -72,7 +72,7 @@ switchTheme = "切换主题"
 
 # === partials/footer.html ===
 [footer]
-poweredBySome = "由 {{ .Hugo }} 强力驱动 | 主题 - {{ .Theme }}"
+poweredBySome = "框架 - {{ .Hugo }} | 主题 - {{ .Theme }}"
 siteUV = "总访客数"
 sitePV = "总访问量"
 siteRunning = "网站运行中……"
