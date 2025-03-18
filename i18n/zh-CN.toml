@@ -112,11 +112,11 @@ other = "分享到"
 contents = "目录"
 pin = "置顶"
 repost = "转载"
-publishedOnDate = "发布于 {{ .Date }}"
+publishedOnDate = "{{ .Date }}"
 views = "次阅读"
 comments = "条评论"
 author = "作者"
-updatedOnDate = "更新于 {{ .Date }}"
+updatedOnDate = "{{ .Date }}"
 readMarkdown = "阅读原始文档"
 viewSource = "查看源码"
 editThisPage = "编辑此页"
@@ -133,9 +133,9 @@ encryptyAgain = "重新加密"
 relatedContent = "相关内容"
 
 [single.includedIn]
-categories = "收录于 {{ .Categories }}"
-collections = "收录于 {{ .Collections }}"
-both = "收录于 {{ .Categories }} 和 {{ .Collections }}"
+categories = "{{ .Categories }}"
+collections = "{{ .Collections }}"
+both = "{{ .Categories }}&nbsp;│&nbsp;{{ .Collections }}"
 
 [single.wordCount]
 other = "{{ .Count }} 字"
@@ -144,7 +144,7 @@ other = "{{ .Count }} 字"
 other = "约 {{ .Count }} 字"
 
 [single.readingTime]
-other = "预计阅读 {{ .Count }} 分钟"
+other = "{{ .Count }} 分钟"
 
 [single.reward]
 donate = "赞赏"

@@ -9,6 +9,7 @@ $header-background-color-dark: #252627 !default;
 @mixin background-blur($light-color: rgba(244, 244, 246, 0.5), $dark-color: rgba(22, 22, 24, 0.7)) {
     background-color: $light-color;
     backdrop-filter: blur(20px) saturate(180%);
+
     [data-theme="dark"] & {
         background-color: $dark-color;
     }
@@ -24,6 +25,7 @@ $header-background-color-dark: #252627 !default;
 /* -------------- 背景透明 -------------- */
 %background-transparent {
     background-color: transparent;
+
     @include dark-theme {
         background-color: transparent;
     }
@@ -31,6 +33,7 @@ $header-background-color-dark: #252627 !default;
 
 header {
     @extend %background-transparent;
+
     .header-blur,
     .header-blur-mobile {
         left: 0;
@@ -44,58 +47,146 @@ header {
         transition: opacity 0.2s ease-in;
     }
 }
+
 .blur header {
+
     .background-blur,
     .background-blur-mobile {
         opacity: 1;
+    }
+
+    .header-wrapper {
+        @include background-blur;
     }
 }
 
 #header-mobile .header-container .menu {
     @include background-blur;
-    @extend %background-transparent;
     border-top: none;
     box-shadow: none;
     -webkit-box-shadow: none;
+
     .search-wrapper,
     .menu-system {
         @extend %background-transparent;
     }
 }
 
-.fixed-button{
+.fixed-button {
     @include dark-theme {
         background-color: rgba(22, 22, 24, 0.7);
     }
 }
 
-// @media only screen and (max-width: 480px){
-//     .container {
-//         position: relative;
-//         &:before,
-//         &:after {
-//             content: "";
-//             position: fixed;
-//             width: 20px;
-//             height: 20px;
-//             @include z-index(2);
-//         }
-//         &::before {
-//             left: 0;
-//             background: radial-gradient(circle at 100% 100%, transparent 20px, $header-background-color 20px);
-//             [data-theme="dark"] & {
-//                 background: radial-gradient(circle at 100% 100%, transparent 20px, $header-background-color-dark 20px);
+.home.posts {
 
-//             }
-//         }
-//         &:after {
-//             right: 0;
-//             background: radial-gradient(circle at 0 100%, transparent 20px, $header-background-color 20px,);
-//             [data-theme = "dark"] & {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 1.5rem;
+    margin-top: 1.25rem;
 
-//             background: radial-gradient(circle at 0 100%, transparent 20px, $header-background-color-dark 20px,);
-//             }
-//         }
-//     }
+    .summary {
+        padding: 0;
+        margin-bottom: 1.25rem;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        border: 1px solid #f0f0f0;
+        display: flex;
+        flex-direction: column;
 
-// }
+        .featured-image-preview {
+            aspect-ratio: auto 1000 / 550;
+            margin: 0;
+        }
+
+        .post-entery {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+            flex-grow: 1;
+        }
+
+        .single-title {
+            margin: 0.5px 0;
+            padding: 0;
+        }
+
+        .content {
+            font-size: 14px;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .single-title, .content{
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            white-space: initial;
+            -webkit-box-orient: vertical;
+        }
+
+        .post-meta a{
+            font-weight: 600;
+        }
+
+        &:not(:last-of-type)::after {
+            display: none;
+        }
+        .post-footer{
+            margin: 0;
+        }
+        .post-sign{
+            display: flex;
+            flex-direction: row;
+            gap: .25rem;
+            .icon-repost{
+                color: var(--fi-success);
+            }
+            .icon-pin{
+                color: var(--fi-danger);
+            }
+        }   
+    }
+}
+
+@media only screen and (max-width:680px){
+    .page.single .featured-image{
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        margin-block: 2rem;
+    }
+}
+
+@media only screen and (min-width: 760px) {
+    .home.posts {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    %page-style {
+        // 设置宽度为 60%，并四舍五入到最接近的 2px 的倍数
+        width: ROUND(60%, 2px);
+
+        // 如果页面样式为 'wide'，则宽度设置为 64%，并四舍五入到最接近的 2px 的倍数
+        [data-page-style='wide'] & {
+            width: ROUND(64%, 2px);
+        }
+
+        // 如果页面样式为 'narrow'，则最大宽度设置为 800px
+        [data-page-style='narrow'] & {
+            width: 700px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+    // 调整桌面端头部左侧的内边距
+    #header-desktop .header-wrapper {
+        padding-inline: 1rem;
+    }
+
+}
