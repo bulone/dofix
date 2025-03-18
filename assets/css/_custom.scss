@@ -165,17 +165,40 @@ header {
     }
 }
 
+footer {
+    max-width: 100%;
+    padding-inline: 1rem;
+    width: auto;
+    
+    .footer-container {
+        box-sizing: border-box;
+        flex-direction: inherit;
+        justify-content: space-between;
+        margin-inline: auto;
+
+        .footer-line {
+            width: auto;
+        }
+    }
+}
+
 @media only screen and (max-width:680px) {
     .page.single .featured-image {
         width: calc(100% + 2rem);
         margin-left: -1rem;
         margin-block: 2rem;
     }
+
 }
 
 @media only screen and (min-width: 760px) {
     .post-article {
         grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+        width: 700px;
+        margin-inline:auto;
     }
 
     %page-style {
@@ -191,6 +214,8 @@ header {
         [data-page-style='narrow'] & {
             width: 700px;
         }
+
+
     }
 }
 
