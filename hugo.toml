@@ -485,7 +485,7 @@ enableEmoji = true
     # FixIt 0.2.12 | NEW Public network security only in China (HTML format is supported)
     gov = ""
     # ICP info only in China (HTML format is supported)
-    icp = ""
+    icp = "皖190405920-1号"
     # license info (HTML format is supported)
     license = ""
     # FixIt 0.3.0 | NEW whether to show Hugo and theme info
@@ -961,7 +961,7 @@ enableEmoji = true
     profile = []
     aside = []
     comment = []
-    footer = []
+    footer = ["custom/footer.html"]
     widgets = []
     assets = []
     postTocBefore = []
