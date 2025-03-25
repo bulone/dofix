@@ -135,7 +135,7 @@ relatedContent = "相关内容"
 [single.includedIn]
 categories = "{{ .Categories }}"
 collections = "{{ .Collections }}"
-both = "{{ .Categories }}&nbsp;│&nbsp;{{ .Collections }}"
+both = "{{ .Categories }} │ {{ .Collections }}"
 
 [single.wordCount]
 other = "{{ .Count }} 字"
@@ -144,7 +144,7 @@ other = "{{ .Count }} 字"
 other = "约 {{ .Count }} 字"
 
 [single.readingTime]
-other = "{{ .Count }} 分钟"
+other = "约 {{ .Count }} 分钟"
 
 [single.reward]
 donate = "赞赏"

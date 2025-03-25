@@ -25,10 +25,13 @@
     </div>
   {{- end -}}
 
-  <div class="post-entery">
+  <div class="post-info">
+    <div class="post-included">
+      {{- partial "single/post-included-in.html" . -}}
+    </div>
     {{- /* Title */ -}}
     <h2 class="single-title" itemprop="name headline">
-      <!-- {{- with $params.weight -}}
+      {{- with $params.weight -}}
         {{- $icon := dict "Class" "fa-solid fa-thumbtack fa-fw" -}}
         <span title="{{ T "single.pin" }}" class="icon-pin">{{- $icon | partial "plugin/icon.html" -}}</span>
       {{- end -}}
@@ -39,21 +42,22 @@
           {{- $title := cond (hasPrefix .Url "http") (printf "%v -> %v" (T "single.repost") .Url ) (T "single.repost") -}}
           <span title="{{ $title }}" class="icon-repost">{{- $icon | partial "plugin/icon.html" -}}</span>
         {{- end -}}
-      {{- end -}} -->
+      {{- end -}}
       <a href="{{ .RelPermalink }}">{{ cond (.Param "capitalizeTitles") (title .Title) .Title }}</a>
     </h2>
 
     {{- /* Meta */ -}}
-    <!-- <div class="post-meta"> -->
-      <!-- {{- partial "single/post-author.html" . -}} -->
-      <!-- {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
+    <!-- <div class="post-meta">
+      {{- partial "single/post-author.html" . -}}
+
+      {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
         &nbsp;<span class="post-publish" title='{{ "2006-01-02 15:04:05" | $.PublishDate.Format }}'>
           {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "single.publishedOnDate" | safeHTML -}}
         </span>
-      {{- end -}} -->
+      {{- end -}}
 
-      <!-- {{- partial "single/post-included-in.html" . -}} -->
-    <!-- </div> -->
+      {{- partial "single/post-included-in.html" . -}}
+    </div> -->
 
     {{- /* Summary content */ -}}
     <div class="content">
@@ -70,14 +74,32 @@
       {{- end -}}
     </div>
 
-    <div class="post-meta">
-      {{- partial "single/post-included-in.html" . -}}
-    </div>
-
     {{- /* Footer */ -}}
     <div class="post-footer">
       <!-- <a href="{{ .RelPermalink }}">{{ T "single.readMore" }}</a> -->
-      <!-- {{- $tagTerms := .GetTerms "tags" -}}
+      <!-- {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
+        <span class="post-publish" title='{{ "2006-01-02 15:04:05" | $.PublishDate.Format }}'>
+          {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "single.publishedOnDate" | safeHTML -}}
+        </span>
+      {{- end -}} -->
+      <div class="post-time">
+        {{- $publishDate := .PublishDate.Format "2006-01-02" -}}
+        {{- $updateDate := .Lastmod.Format "2006-01-02 15:04:05" -}}
+
+        <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}"
+              {{ if ne .Lastmod.Unix .PublishDate.Unix }}
+              title="更新于 {{ $updateDate }}"
+              {{ else }}
+              title="发布于 {{ $publishDate }}"
+              {{ end }}>
+          {{ $publishDate }}
+        </time>
+
+        {{- if ne .Lastmod.Unix .PublishDate.Unix -}}
+          <sup class="update-marker" aria-label="已更新">*</sup>
+        {{- end -}}
+      </div>
+      {{- $tagTerms := .GetTerms "tags" -}}
       {{- if $tagTerms -}}
         <div class="post-tags">
           {{- dict "Class" "fa-solid fa-tags fa-fw me-1" | partial "plugin/icon.html" -}}
@@ -85,26 +107,7 @@
             <a href='{{ partial "function/escapeurl.html" .RelPermalink }}' class="post-tag">{{ .LinkTitle }}</a>
           {{- end -}}
         </div>
-      {{- end -}} -->
-      {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
-        <span class="post-publish" title='{{ "2006-01-02 15:04:05" | $.PublishDate.Format }}'>
-          {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "single.publishedOnDate" | safeHTML -}}
-        </span>
       {{- end -}}
-      <div class="post-sign">
-        {{- with $params.weight -}}
-          {{- $icon := dict "Class" "fa-solid fa-thumbtack fa-fw" -}}
-          <span title="{{ T "single.pin" }}" class="icon-pin">{{- $icon | partial "plugin/icon.html" -}}</span>
-        {{- end -}}
-        {{- $repost := $params.repost | default dict -}}
-        {{- with $repost -}}
-          {{- if eq .Enable true -}}
-            {{- $icon := dict "Class" "fa-solid fa-share fa-fw" -}}
-            {{- $title := cond (hasPrefix .Url "http") (printf "%v -> %v" (T "single.repost") .Url ) (T "single.repost") -}}
-            <span title="{{ $title }}" class="icon-repost">{{- $icon | partial "plugin/icon.html" -}}</span>
-          {{- end -}}
-        {{- end -}}
-      </div>
     </div>
   </div>
 </article>

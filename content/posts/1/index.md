@@ -9,7 +9,7 @@ author:
   link:
   email:
   avatar:
-description:
+description: 二度美化Fixit，赏心悦目些。
 keywords:
 license:
 comment: false
@@ -18,6 +18,8 @@ tags:
   - draft
 categories:
   - draft
+  - text
+collections: test
 hiddenFromHomePage: false
 hiddenFromSearch: false
 hiddenFromRelated: false
@@ -33,9 +35,6 @@ math: false
 lightgallery: false
 password:
 message:
-repost:
-  enable: true
-  url:
 
 # See details front matter: https://fixit.lruihao.cn/documentation/content-management/introduction/#front-matter
 ---
@@ -43,9 +42,11 @@ repost:
 <!--more-->
 
 
-![12345](/cover.jpg)
 
-Fixit 是一款简约而不失功能的 Hugo 主题，并且给予了相对自由的自定义化程度，可以在其基础上自行修改相关页面、CSS 样式。因为我的前端语言有限，因此部分样式是借鉴其他博客站或 GPT 生成代码后之修改。  
+
+😁Fixit 是一款简约而不失功能的 Hugo 主题，并且给予了相对自由的自定义化程度，可以在其基础上自行修改相关页面、CSS 样式。因为我的前端语言有限，因此部分样式是借鉴其他博客站或 GPT 生成代码后之修改。  
+
+{{< link "https://github.com/hugo-fixit/FixIt" "FixIt Theme" "source of FixIt Theme" true >}}
 
 网站主体风格借鉴 [Blog - atpX](https://atpx.com/blog/)，🙇感谢。  
 颜色来自 [Customizing Colors - Tailwind CSS](https://v3.tailwindcss.com/docs/customizing-colors)，🤩好看。

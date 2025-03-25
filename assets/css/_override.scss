@@ -1,12 +1,47 @@
-@import url("https://ik.imagekit.io/xlccwwjep/czth/result.css?updatedAt=1742212334376");
+@import url("https://ik.imagekit.io/xlccwwjep/OPPO%20Sans%204/result.css?updatedAt=1742564851334");
 $global-font-size: 18px;
 $global-font-family:
-    "锤子T黑修改",
+    "OPPO Sans 4.0",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
 $header-title-font-family: $global-font-family;
+
+
+// Radius of the border
+$global-border-radius: .675rem;
+$global-color-primary: #8B4513;
+$global-color-primary-dark: #D2A679;
+
+// Color of the background
+$global-background-color: #ffffff;
+$global-background-color-dark: #292a2e;
+
+// Color of the text
+$global-font-color: #1a1c1e;
+$global-font-color-dark: #e3e2e6;
+
+/// Color of the link
+$global-link-color: #161209 ;
+$global-link-color-dark: #e3e2e6;
+
+$global-link-hover-color: $global-color-primary; 
+$global-link-hover-color-dark: $global-color-primary-dark;
+
+
+// Color of the single link
+$single-link-color: #161209; 
+$single-link-color-dark: #e3e2e6; 
+
+// Color of the hover single link
+$single-link-hover-color: $global-color-primary; 
+$single-link-hover-color-dark: $global-color-primary-dark; 
+
+// ========== Selection ========== //
+// Color of the selected text
+$selection-color: rgba(245, 158, 11,.25);
+$selection-color-dark: rgba(252, 211, 77,.4) ;
 
 @media only screen and (max-width: 680px) {
     html {

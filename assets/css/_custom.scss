@@ -1,19 +1,8 @@
-$header-background-color: #f8f8f8 !default;
-$header-background-color-dark: #252627 !default;
-
 /* ---------------------------------- */
 /*                公共样式                */
 /* ---------------------------------- */
 
-/* ------------- 头部玻璃效果 ------------- */
-@mixin background-blur($light-color: rgba(244, 244, 246, 0.5), $dark-color: rgba(22, 22, 24, 0.7)) {
-    background-color: $light-color;
-    backdrop-filter: blur(20px) saturate(180%);
 
-    [data-theme="dark"] & {
-        background-color: $dark-color;
-    }
-}
 
 /* ------------- 主题深色模式 ------------- */
 @mixin dark-theme {
@@ -22,252 +11,182 @@ $header-background-color-dark: #252627 !default;
     }
 }
 
+@mixin text-color($light-color: $global-text-color, $dark-color: $global-text-color-dark) {
+    color: $light-color;
+
+    @include dark-theme {
+        color: $dark-color;
+    }
+
+}
+
 /* -------------- 背景透明 -------------- */
 %background-transparent {
-    background-color: transparent;
+    background: transparent;
 
     @include dark-theme {
-        background-color: transparent;
+        background: transparent;
     }
 }
 
+a {
+    transition: all .2s ease-in;
+
+    &:hover:not(.single-title a):not(.header-title a) {
+        font-weight: 600;
+    }
+}
+
+/* -------------------------------------------- */
+/*                    头部                     */
+/* ------------------------------------------ */
 header {
-    @extend %background-transparent;
+    max-width: 100%;
+    width: auto;
 
-    .header-blur,
-    .header-blur-mobile {
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        position: absolute;
-        @include z-index(-1);
-        @include background-blur();
-        opacity: 0;
-        transition: opacity 0.2s ease-in;
-    }
-}
+    &:hover {
+        box-shadow: none;
 
-.blur header {
-
-    .background-blur,
-    .background-blur-mobile {
-        opacity: 1;
-    }
-
-    .header-wrapper {
-        @include background-blur;
-    }
-}
-
-#header-mobile .header-container .menu {
-    @include background-blur;
-    border-top: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-
-    .search-wrapper,
-    .menu-system {
-        @extend %background-transparent;
-    }
-}
-
-.fixed-button {
-    @include dark-theme {
-        background-color: rgba(22, 22, 24, 0.7);
-    }
-}
-
-.home.posts {
-    .summary {
-        padding: 0;
-        margin-bottom: 1.25rem;
-        border-radius: 1.25rem;
-        overflow: hidden;
-        border: 1px solid #f0f0f0;
-        display: flex;
-        flex-direction: column;
-
-        .featured-image-preview {
-            aspect-ratio: auto 1000 / 550;
-            margin: 0;
-        }
-
-        .post-entery {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1rem;
-            flex-grow: 1;
-        }
-
-        .single-title {
-            margin: 0.5px 0;
-            padding: 0;
-        }
-
-        .content {
-            font-size: 14px;
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        .single-title,
-        .content {
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            white-space: initial;
-            -webkit-box-orient: vertical;
-        }
-
-        .post-meta a {
-            font-weight: 600;
-        }
-
-        &:not(:last-of-type)::after {
-            display: none;
-        }
-
-        .post-footer {
-            margin: 0;
-        }
-
-        .post-sign {
-            display: flex;
-            flex-direction: row;
-            gap: .25rem;
-
-            .icon-repost {
-                color: var(--fi-success);
-            }
-
-            .icon-pin {
-                color: var(--fi-danger);
-            }
+        @include dark-theme {
+            box-shadow: none;
         }
     }
 }
+
+/* -------------------------------------------- */
+/*               首页文章部分                   */
+/* ------------------------------------------- */
+
 
 .post-article {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 1.5rem;
-    margin-top: 1.25rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
+.home.posts .summary {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    @include dark-theme();
+    border-radius: $global-border-radius;
+    padding: 0;
+    overflow: hidden;
+    border: solid 1px #f0f0f0;
 
-.post-meta-line {
-    span {
-        margin-right: 0.3rem;
+
+    .featured-image-preview {
+        aspect-ratio: auto 1000 / 500;
+        margin: 0;
+
+        img {
+            border-radius: 0;
+        }
     }
-}
 
-footer {
-    max-width: 100%;
-    padding-inline: 1rem;
-    width: auto;
+    .post-included {
+        font-size: 0.75rem;
+        @include text-color(#4b5563, #d1d5db);
+        line-height: 1.2;
+    }
 
-
-    .footer-container {
-        box-sizing: border-box;
-        flex-direction: inherit;
+    .post-info {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
         justify-content: space-between;
-        margin-inline: auto;
-        flex-wrap: wrap;
+        flex-grow: 1;
+        gap: .3rem;
 
-        .custom-footer {
-            width: 100%;
-            text-align: start;
-            height: 1.5rem;
-            margin-bottom: .875rem;
-            display: flex;
-            gap: .25rem;
-            font-size: 1rem;
-
-            .creative-common-icon {
-                display: flex;
-                gap: .25rem;
-                align-items: center;
-                // i{
-                //     align-content: center;
-                // }
-            }
-
-            .not-by-ai {
-                
-                img {
-                    height: 100%;
-                    object-fit: contain;
-                    &.not-by-ai-day {
-                        display: block;
-                    }
-                    &.not-by-ai-dark {
-                        display: none;
-                    }
-                    @include dark-theme {
-                        &.not-by-ai-day {
-                            display: none;
-                        }
-                        &.not-by-ai-dark {
-                            display: block;
-                        }
-                    }
-                }
-            }
+        .single-title {
+            padding: 0;
+            margin: 0;
+            font-size: 1.5rem;
+            margin-block: 0 .5rem;
         }
 
-        .footer-line {
-            width: auto;
+        .content {
+            margin: 0 0 .5rem 0;
+            font-size: .875rem;
+            line-height: 1.4;
+            @include text-color(#4b5563, #d1d5db);
+        }
+
+        .post-footer {
+            font-size: .75rem;
+            line-height: 1.2;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: start;
+            gap: .5rem;
+            @include text-color(#4b5563, #d1d5db);
+
+            .post-tags {
+                @include text-color(#4b5563, #d1d5db);
+                max-width: 100%;
+            }
+
+        }
+    }
+
+    &::after {
+        display: none;
+    }
+}
+
+/* -------------------------------------------- */
+/*                      文章页                     */
+/* -------------------------------------------- */
+.single {
+    .post-meta-line {
+        margin-top: .5rem;
+        span{
+            margin-right: .3rem;
+        }
+        a{
+            font-size: .875rem;
+            border: solid 1px $global-color-primary;
+            padding: .2rem;
+            transition: all .2s ease;
+            border-radius: .3rem;
+            box-sizing: border-box;
+            @include text-color($global-color-primary-dark, $global-color-primary-dark);
+        }
+    }
+
+    .content p {
+        a:not(.lightgallery){
+            @include text-color($global-color-primary, $global-color-primary-dark);
+            box-shadow: 0 1px;
         }
     }
 }
 
-@media only screen and (max-width:680px) {
-    .page.single .featured-image {
-        width: calc(100% + 2rem);
-        margin-left: -1rem;
-        margin-block: 2rem;
-    }
 
+#toc-auto .toc-content li.has-active>a {
+    @include text-color($global-color-primary, $global-color-primary-dark);
 }
 
-@media only screen and (min-width: 760px) {
-    .post-article {
-        grid-template-columns: 1fr 1fr;
-    }
 
-    footer {
-        width: 700px;
-        margin-inline: auto;
-    }
-
-    %page-style {
-        // 设置宽度为 60%，并四舍五入到最接近的 2px 的倍数
-        width: ROUND(60%, 2px);
-
-        // 如果页面样式为 'wide'，则宽度设置为 64%，并四舍五入到最接近的 2px 的倍数
-        [data-page-style='wide'] & {
-            width: ROUND(64%, 2px);
-        }
-
-        // 如果页面样式为 'narrow'，则最大宽度设置为 800px
-        [data-page-style='narrow'] & {
+/* -------------------------------------------- */
+/*                     页面宽度                 */
+/* ------------------------------------------- */
+[data-page-style='custom'] {
+    @media only screen and (min-width: 760px) {
+        %page-style {
             width: 700px;
         }
-
-
-    }
-}
-
-
-@media only screen and (max-width: 1200px) {
-
-    // 调整桌面端头部左侧的内边距
-    #header-desktop .header-wrapper {
-        padding-inline: 1rem;
     }
 
+    @media only screen and (max-width: 760px) {
+        %page-style {
+            width: 100% !important;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .post-article {
+            grid-template-columns: 1fr;
+        }
+    }
 }

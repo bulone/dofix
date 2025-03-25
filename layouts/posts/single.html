@@ -48,7 +48,7 @@
     <div class="post-meta">
       <div class="post-meta-line">
         <!-- {{- partial "single/post-author.html" . -}} -->
-        <!-- {{- partial "single/post-included-in.html" . -}} -->
+        {{- partial "single/post-included-in.html" . -}}
       </div>
       {{- /* TODO add disclaimer or space between meta and content */ -}}
       <div class="post-meta-line">
@@ -74,7 +74,7 @@
         {{- end -}}
         {{- if $params.readingTime -}}
           <span>
-            {{- dict "Class" "fa-solid fa-coffee fa-fw me-1" | partial "plugin/icon.html" -}}
+            {{- dict "Class" "fa-solid fa-mug-hot fa-fw me-1" | partial "plugin/icon.html" -}}
             {{- T "single.readingTime" .ReadingTime -}}
           </span>&nbsp;
         {{- end -}}

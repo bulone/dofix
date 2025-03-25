@@ -11,7 +11,7 @@
 # -------------------------------------------------------------------------------------
 
 # website title
-title = "测试网站"
+title = "吐司气泡"
 # Hostname (and path) to the root
 baseURL = "http://localhost:1313"
 # theme list
@@ -48,7 +48,7 @@ enableEmoji = true
     pre = ""
     # you can add extra information after the name (HTML format is supported), such as icons
     post = ""
-    name = "Archives"
+    name = "归档"
     url = "/archives/"
     # title will be shown when you hover on this menu link
     title = ""
@@ -70,7 +70,7 @@ enableEmoji = true
     parent = ""
     pre = ""
     post = ""
-    name = "Categories"
+    name = "类别"
     url = "/categories/"
     title = ""
     weight = 2
@@ -81,7 +81,7 @@ enableEmoji = true
     parent = ""
     pre = ""
     post = ""
-    name = "Tags"
+    name = "标签"
     url = "/tags/"
     title = ""
     weight = 3
@@ -334,7 +334,7 @@ enableEmoji = true
   # FixIt 0.2.12 | NEW enable PWA
   enablePWA = false
   # FixIt 0.2.14 | NEW whether to add external Icon for external links automatically
-  externalIcon = false
+  externalIcon = true
   # FixIt 0.3.13 | NEW whether to capitalize titles
   capitalizeTitles = true
   # FixIt 0.3.0 | NEW whether to add site title to the title of every page
@@ -441,7 +441,7 @@ enableEmoji = true
     # Header title config
     [params.header.title]
       # URL of the LOGO
-      logo = ""
+      logo = "/logo.svg"
       # title name
       name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
@@ -460,10 +460,10 @@ enableEmoji = true
   # FixIt 0.2.18 | NEW Breadcrumb config
   [params.breadcrumb]
     enable = false
-    sticky = true
+    sticky = false
     showHome = true
     # FixIt 0.3.13 | NEW
-    separator = "/"
+    separator = ">>"
     capitalize = true
 
   # FixIt 0.3.10 | NEW Post navigation config
@@ -561,21 +561,21 @@ enableEmoji = true
   [params.home]
     # Home page profile
     [params.home.profile]
-      enable = false
+      enable = true
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = ""
+      avatarURL = "/avatar.jpg"
       # FixIt 0.2.17 | NEW identifier of avatar menu link
       avatarMenu = ""
       # title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page (HTML format is supported)
-      subtitle = ""
+      subtitle = "🍞这有多的吐司面包快来品鉴"
       # whether to use typeit animation for subtitle
-      typeit = true
+      typeit = false
       # whether to show social links
-      social = true
+      social = false
       # disclaimer (HTML format is supported)
       disclaimer = ""
     # Home page posts
@@ -961,7 +961,7 @@ enableEmoji = true
     profile = []
     aside = []
     comment = []
-    footer = ["custom/footer.html"]
+    footer = []
     widgets = []
     assets = []
     postTocBefore = []
@@ -996,7 +996,7 @@ enableEmoji = true
     # FixIt 0.2.18 | CHANGED whether to enable lightgallery
     # set to true, images in the content will be shown as the gallery if the image has a title, e.g. ![alt](src "title")
     # set to "force", images in the content will be forced to shown as the gallery regardless of the image has a title or not, e.g. ![alt](src)
-    lightgallery = false
+    lightgallery = "force"
     # whether to enable the ruby extended syntax
     ruby = true
     # whether to enable the fraction extended syntax
@@ -1008,13 +1008,13 @@ enableEmoji = true
     # whether to show link to Raw Markdown content of the post
     linkToMarkdown = true
     # FixIt 0.3.0 | NEW whether to show link to view source code of the post
-    linkToSource = true
+    linkToSource = false
     # FixIt 0.3.0 | NEW whether to show link to edit the post
-    linkToEdit = true
+    linkToEdit = false
     # FixIt 0.3.0 | NEW whether to show link to report issue for the post
-    linkToReport = true
+    linkToReport = false
     # FixIt 0.3.10 | CHANGED Page style ["narrow", "normal", "wide", ...]
-    pageStyle = "narrow"
+    pageStyle = "custom"
     # FixIt 0.2.17 | CHANGED Auto Bookmark Support
     # If true, save the reading progress when closing the page.
     autoBookmark = false
@@ -1312,7 +1312,7 @@ enableEmoji = true
         # someJavascript = "some.js"
         # located in "assets/"
         # Or
-        # someJavascript = "https://cdn.example.com/some.js"
+        someJavascript = "https://unpkg.com/msemoji@1.1.2/dist/msemoji.min.js"
     # Page SEO config
     [params.page.seo]
       # image URL
