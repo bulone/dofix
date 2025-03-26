@@ -1,0 +1,24 @@
+{{- $destination := .Destination -}}
+{{- $isExternal := not (hasPrefix $destination "/") -}}
+{{- with dict "Path" $destination | partial "function/resource.html" -}}
+  {{- $destination = .RelPermalink -}}
+  {{- $isExternal = false -}}
+{{- end -}}
+
+{{- if $isExternal -}}
+  {{/* 外部链接 - 添加拦截处理 */}}
+  <a href="/redirect/?url={{ $destination | base64Encode }}"
+     class="external-link"
+     data-external-destination="{{ $destination }}"
+     title="{{ .Title }}"
+     target="_blank"
+     {{ if $.Page.Site.Params.externalIcon }}data-external-icon="true"{{ end }}>
+    {{ .Text }}
+    {{ if $.Page.Site.Params.externalIcon }}<span class="external-icon">↗</span>{{ end }}
+  </a>
+{{- else -}}
+  {{/* 内部链接 - 正常渲染 */}}
+  {{- $options := dict "Destination" $destination "Title" .Title "Content" .Text -}}
+  {{- partial "plugin/link.html" $options -}}
+{{- end -}}
+

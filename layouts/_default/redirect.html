@@ -1,0 +1,34 @@
+{{- define "title" -}}
+  {{- cond (.Param "capitalizeTitles") (title .Title) .Title -}}
+  {{- if .Site.Params.withSiteTitle }} {{ .Site.Params.titleDelimiter }} {{ .Site.Title }}{{- end -}}
+{{- end -}}
+
+{{ define "custom-head" }}
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{{ end }}
+
+{{ define "content" }}
+    <div class="external-warning">
+        <h2 class="warning-title">⚠️ 您即将离开 {{ .Site.Title }}</h2>
+        <p>将要访问的外部链接：</p>
+        <div class="external-url" id="target-url">{{ .Params.url }}</div>
+        
+        <p>⁉请自行识别连接是否安全，注意您的帐号和财产安全。</p>
+        
+        <div class="button-group">
+            <a href="{{ .Params.url }}" class="button continue-btn" id="proceed-link">🚀 继续访问</a>
+        </div>
+    </div>
+
+    <script>
+        // 解码URL并显示
+        const params = new URLSearchParams(window.location.search);
+        const encodedUrl = params.get("url");
+        const decodedUrl = atob(encodedUrl);
+        document.getElementById('target-url').textContent = decodedUrl;
+        document.getElementById('proceed-link').href = decodedUrl;
+    </script>
+{{ end }}

@@ -298,7 +298,6 @@ enableEmoji = true
   page = ["html", "markdown"]
   section = ["html", "rss"]
   taxonomy = ["html"]
-  term = ["html", "rss"]
 
 # -------------------------------------------------------------------------------------
 # Taxonomies Configuration

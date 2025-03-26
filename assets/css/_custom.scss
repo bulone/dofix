@@ -161,8 +161,8 @@ header {
         }
     }
 
-    .content p {
-        a:not(.lightgallery){
+    .content {
+        a:not(.lightgallery):not(.card-link){
             @include text-color($global-color-primary, $global-color-primary-dark);
             box-shadow: 0 1px;
         }
@@ -172,6 +172,59 @@ header {
 
 #toc-auto .toc-content li.has-active>a {
     @include text-color($global-color-primary, $global-color-primary-dark);
+}
+
+/* -------------------- 跳转页 ------------------- */
+.external-warning {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: $global-border-radius;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    text-align: center;
+}
+.warning-title {
+    color: #d32f2f;
+    margin-top: 0;
+}
+.external-url {
+    word-break: break-all;
+    background: #f5f5f5;
+    @include dark-theme{
+        background: #363636;
+    }
+    padding: 0.5rem;
+    border-radius: $global-border-radius;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.button-group {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.button {
+    padding: 0.75rem 1.5rem;
+    border-radius: $global-border-radius;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.continue-btn {
+    background: #8B4513;
+    color: white;
+}
+.continue-btn:hover {
+    background: #D2A679;
+    @include dark-theme{
+        color: #8B4513;
+    }
 }
 
 
