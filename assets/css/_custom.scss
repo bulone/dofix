@@ -170,7 +170,7 @@ header {
 }
 
 
-#toc-auto .toc-content li.has-active>a {
+#toc-auto .toc-content li.has-active>a, .collection-details .collection-content .collection-list .collection-item>.active {
     @include text-color($global-color-primary, $global-color-primary-dark);
 }
 
