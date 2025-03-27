@@ -1,6 +1,6 @@
 {{- $params := .Params | merge .Site.Params.page -}}
 
-<article class="single summary" itemscope itemtype="http://schema.org/Article">
+<article class="single summary" itemscope itemtype="http://schema.org/Article" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-easing="ease-out-cubic" data-aos-once="true">
   {{- /* Featured image */ -}}
   {{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
   {{- with dict "Path" $image "Resources" .Resources | partial "function/resource.html" }}

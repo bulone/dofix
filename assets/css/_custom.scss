@@ -1,7 +1,7 @@
 /* ---------------------------------- */
 /*                公共样式                */
 /* ---------------------------------- */
-
+@import url("https://unpkg.com/aos@2.3.1/dist/aos.css");
 /* 主题色 */
 
 
@@ -38,10 +38,10 @@ a {
     }
 }
 
-:root{
+:root {
     /* 主题色 */
-  --waline-theme-color: #D2A679 !important;
-  --waline-active-color: #8B4513 !important;
+    --waline-theme-color: #D2A679 !important;
+    --waline-active-color: #8B4513 !important;
 }
 
 /* -------------------------------------------- */
@@ -147,10 +147,12 @@ header {
 .single {
     .post-meta-line {
         margin-top: .5rem;
-        span{
+
+        span {
             margin-right: .3rem;
         }
-        a{
+
+        a {
             font-size: .875rem;
             border: solid 1px $global-color-primary;
             padding: .2rem;
@@ -162,7 +164,7 @@ header {
     }
 
     .content {
-        a:not(.lightgallery):not(.card-link){
+        a:not(.lightgallery):not(.card-link) {
             @include text-color($global-color-primary, $global-color-primary-dark);
             box-shadow: 0 1px;
         }
@@ -170,7 +172,8 @@ header {
 }
 
 
-#toc-auto .toc-content li.has-active>a, .collection-details .collection-content .collection-list .collection-item>.active {
+#toc-auto .toc-content li.has-active>a,
+.collection-details .collection-content .collection-list .collection-item>.active {
     @include text-color($global-color-primary, $global-color-primary-dark);
 }
 
@@ -181,20 +184,24 @@ header {
     padding: 2rem;
     border: 1px solid #eee;
     border-radius: $global-border-radius;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     line-height: 1.6;
     text-align: center;
 }
+
 .warning-title {
     color: #d32f2f;
     margin-top: 0;
 }
+
 .external-url {
     word-break: break-all;
     background: #f5f5f5;
-    @include dark-theme{
+
+    @include dark-theme {
         background: #363636;
     }
+
     padding: 0.5rem;
     border-radius: $global-border-radius;
     display: inline-block;
@@ -202,6 +209,7 @@ header {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .button-group {
     margin-top: 1.5rem;
     display: flex;
@@ -209,6 +217,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .button {
     padding: 0.75rem 1.5rem;
     border-radius: $global-border-radius;
@@ -216,16 +225,84 @@ header {
     font-weight: 500;
     transition: all 0.2s;
 }
+
 .continue-btn {
     background: #8B4513;
     color: white;
 }
+
 .continue-btn:hover {
     background: #D2A679;
-    @include dark-theme{
+
+    @include dark-theme {
         color: #8B4513;
     }
 }
+
+/* -------------------- 设备页 ------------------- */
+.devices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 12px;
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+.device-item {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    flex: 0 0 calc((100% - 30px) / 3);
+    transition: transform 0.3s ease;
+    border: solid 1px #f0f0f0;
+    border-radius: $global-border-radius;
+}
+
+.device-image {
+    height: 150px;
+    /* 减小高度 */
+    overflow: hidden;
+    margin: 0;
+}
+
+.device-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.device-item:hover .device-image img {
+    transform: scale(1.05);
+}
+
+.device-info {
+    padding: 12px;
+    text-align: left;
+
+    // .device-price {
+    //     font-size: .875rem;
+    //     line-height: 1.4;
+    //     font-family: 'D-DIN', sans-serif;
+    // }
+
+    .device-title {
+        font-size: 1rem;
+        font-weight: 600;
+        a {
+            &.disabled {
+                pointer-events: none;
+            }
+        }
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
+
 
 
 /* -------------------------------------------- */
@@ -242,9 +319,28 @@ header {
         %page-style {
             width: 100% !important;
         }
+
+        .devices {
+            gap: 1rem;
+        }
+
+        .device-item {
+            flex: 0 0 calc((100% - 1rem-4px) / 2);
+            /* 非常小的屏幕上两列布局 */
+        }
     }
 
     @media only screen and (max-width: 480px) {
+        .device-item {
+            flex: 0 0 100%;
+            /* 非常小的屏幕上两列布局 */
+        }
+
+        .device-image {
+            height: 200px;
+
+        }
+
         .post-article {
             grid-template-columns: 1fr;
         }

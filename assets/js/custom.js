@@ -8,7 +8,7 @@ msemoji.parse(document.body, {
 
 /* ------------------ 跳转风险提示 ------------------ */
 document.body.addEventListener('click', function(e) {
-  let target = e.target.closest('.wl-cards a,.card-link');
+  let target = e.target.closest('.wl-cards a,.card-link, .device-link');
   if (target && !target.href.includes('bulone.github.io')) {
       e.preventDefault();
       let encodedUrl = btoa(target.href);
@@ -16,3 +16,6 @@ document.body.addEventListener('click', function(e) {
       window.open(url, '_blank');
   }
 });
+
+/* ------------------ AOS滚动动画 ----------------- */
+AOS.init();

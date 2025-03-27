@@ -1,0 +1,10 @@
+- name: 光头75v5键盘
+  description: 当时不多见的旋钮75键盘。现在键盘价格下来，首发购入的我💔
+  image: /devices/75v5.png
+- name: 英菲克DR01
+  description: 很常见的三模人体工学鼠标，后续买鼠标还是倾向于非对称人体工学鼠。
+  image: /devices/inphic_dr01.png
+  link: https://item.jd.com/100016302897.html
+- name: CZ880
+  description: 闪迪的一款高速U盘，后面听说换换颗粒了？速度挺快的温度也保持的还好。
+  image: /devices/cz880.png

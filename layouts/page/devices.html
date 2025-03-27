@@ -1,0 +1,56 @@
+{{- define "title" -}}
+{{- cond (.Param "capitalizeTitles") (title .Title) .Title -}}
+{{- if .Site.Params.withSiteTitle }} {{ .Site.Params.titleDelimiter }} {{ .Site.Title }}{{- end -}}
+{{- end -}}
+
+{{- define "content" -}}
+
+{{- $params := partial "function/params.html" -}}
+<article class="page single special">
+    <div class="header">
+        {{- /* Title */ -}}
+        <h1 class="single-title animate__animated animate__pulse animate__faster">{{- cond (.Param
+            "capitalizeTitles") (title .Title) .Title -}}</h1>
+        {{- /* Subtitle */ -}}
+        {{- with $params.subtitle -}}<p class="single-subtitle animate__animated animate__fadeIn">{{ . |
+            $.RenderString }}</p>{{- end -}}
+    </div>
+    <div class="devices"  id="content">
+        {{- $optim := slice 
+            (dict "Process" "resize 800x webp q75" "descriptor" "800w")
+            (dict "Process" "resize 1200x webp q75" "descriptor" "1200w")
+            (dict "Process" "resize 1600x webp q75" "descriptor" "1600w")
+          -}}
+        {{ range $index, $device := .Site.Data.devices }}
+        {{- $deviceImage := default "/device/white.webp" $device.image -}}
+        <div class="device-item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+            <figure class="device-image">
+                {{- dict "Src" $deviceImage "Alt" $device.name "Title" $device.description "Caption" $device.name "Loading" "lazy" "Linked" true "OptimConfig" $optim | partial "plugin/image.html" -}}
+            </figure>
+
+            <div class="device-info">
+                {{ if $device.price }}
+                <div class="device-price" title="首发价 - {{ $device.price}}">{{ $device.price}}</div>
+                {{ end }}
+                <div class="device-title">
+                    <a href="{{ $device.link | safeURL }}"
+                        class="device-link {{ if not $device.link }}disabled{{ end }}">{{ $device.name}} {{ if
+                        $device.link }}↗{{ end }}</a>
+                </div>
+                <p class="device-description">{{ $device.description }}</p>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+    {{- /* Content */ -}}
+    <div class="content">
+        {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome |
+        partial "function/content.html" | safeHTML -}}
+    </div>
+
+    {{- /* Comment */ -}}
+    {{- partial "single/comment.html" . -}}
+
+</article>
+{{ end }}

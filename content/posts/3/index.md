@@ -24,7 +24,7 @@ hiddenFromFeed: false
 summary:
 resources:
   - name: featured-image
-    src: /cover.jpg
+    src: cover.jpg
   - name: featured-image-preview
     src: featured-image-preview.jpg
 toc: true
