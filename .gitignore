@@ -2,8 +2,5 @@
 /public/
 hugo.toml
 .hugo_build.lock
-/content/
 /resources/
-/static/
-/content/
 /archetypes/

@@ -1,6 +1,6 @@
 /* ------------------ MSEmoji ----------------- */
 msemoji.parse(document.body, {
-  base: "https://raw.gitmirror.com/DellZHackintosh/msemoji/refs/heads/main/src/",
+  base: "https://gcore.jsdelivr.net/gh/DellZHackintosh/msemoji@1.1.2/src/",
   ext: ".svg",
   folder: "Color",
   high_contrast: false
@@ -18,4 +18,6 @@ document.body.addEventListener('click', function(e) {
 });
 
 /* ------------------ AOS滚动动画 ----------------- */
-AOS.init();
+AOS.init({once: true,
+  easing: "ease-out-cubic",
+});
